@@ -9,6 +9,8 @@
 /perf.data
 /perf.data.old
 /massif.out.*
+node_modules/
+
 
 *~
 *.swp
