@@ -9,7 +9,7 @@ const Patients = require('../models/hospital/patients');
 const Student = require('../models/schools/students');
 const Teacher = require('../models/schools/teachers');
 
-const Database = require('database');
+// const Database = require('database');
 
 //get request
 router.get(['/users','/bank/custmers', '/bank/employees','/hospital/doctors', '/hospital/patients','/schools/students','/schools/teachers'], (req,res)=>{

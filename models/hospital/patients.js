@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+// const Schema = mongoose.Schema;
 
 //PATIENTS SCHEMA
-const PatientSchema = new Schema(
+const PatientsSchema = new mongoose.Schema(
     {
     
-    _id:{
+    id:{
         type: Number,
         unique: true
     },

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+// const Schema = mongoose.Schema;
 const jwt = require('jsonwebtoken');
-const secret = require('../config').secret;
+// const secret = require('config').secret;
 
 //Add a unique validation to the email and Employeename fields
 const uniqueValidator = require('mongoose-unique-validator');
@@ -11,10 +11,10 @@ const crypto = require('crypto');
 
 
 //Employee SCHEMA
-const EmployeeSchema = new Schema(
+const EmployeeSchema = new mongoose.Schema(
 {
 
-_id:{
+id:{
     type: Number,
     unique: true
 },
@@ -38,7 +38,7 @@ email:{
 },
 
 password:{
-    type: Mixed,
+    type: Number,
     required: [true],
     index: true,
 },
@@ -90,7 +90,7 @@ EmployeeSchema.methods.generateJWT = ()=> {
      exp.setDate(today.getDate() + 60);
     
       return jwt.sign({
-        id: this._id,
+        id: this.id,
         Employeename: this.Employeename,
         exp: parseInt(exp.getTime() / 1000),
       }, secret);

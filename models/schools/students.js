@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+// const Schema = mongoose.Schema;
 
 
 //Add a unique validation to the email and studentname fields
 const uniqueValidator = require('mongoose-unique-validator');
 
 //student SCHEMA
-const StudentSchema = new Schema(
+const StudentSchema = new mongoose.Schema(
 {
 
-_id:{
+id:{
     type: Number,
     unique: true
 },

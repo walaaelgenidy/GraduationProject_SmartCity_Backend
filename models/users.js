@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const Schema = mongoose.Schema.Types;
 const jwt = require('jsonwebtoken');
-const secret = require('config').secret;
+// const secret = require('config').secret;
 
 //Add a unique validation to the email and username fields
 const uniqueValidator = require('mongoose-unique-validator');
@@ -11,10 +11,10 @@ const crypto = require('crypto');
 
 
 //USER SCHEMA
-const UsersSchema = new Schema(
+const UserSchema = new mongoose.Schema(
 {
 
-_id:{
+id:{
     type: Number,
     unique: true
 },
@@ -38,7 +38,7 @@ email:{
 },
 
 password:{
-    type: Mixed,
+    type: Number,
     required: [true],
     index: true,
 },
@@ -91,7 +91,7 @@ UserSchema.methods.generateJWT = ()=> {
      exp.setDate(today.getDate() + 60);
     
       return jwt.sign({
-        id: this._id,
+        id: this.id,
         username: this.username,
         exp: parseInt(exp.getTime() / 1000),
       }, secret);
@@ -107,6 +107,6 @@ UserSchema.methods.toAuthJSON = ()=>{
     };
 
 //USER MODEL
-const User =mongoose.model('user',UsersSchema);
+const User =mongoose.model('user',UserSchema);
 
 module.exports = User;
